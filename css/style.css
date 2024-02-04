@@ -1,24 +1,18 @@
-*::-webkit-scrollbar {
-	display: none;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
 
-html {
+
+body { /*Sätter backgrunden till vit-ish och fonten till Expletus Sans, blir inherited av resten av texten om inget annat deklareras*/
 	background-color: rgb(228, 228, 228);
 	font-family: "Expletus Sans", sans-serif;
-	height: 100%;
-	width: 100%;
 }
 
-nav {
+nav { /*Större nav-containern som ligger på toppen av sidan, 2fr utrymme åt vänster & höger och 5fr i mitten för innehåll*/
 	width: 100%;
 	display: grid;
 	grid-template-columns: 2fr 5fr 2fr;
 	grid-template-areas: ". navigation .";
 }
 
-nav ul {
+nav ul { /*Tre lika stora knappar i en lista för de tre sidorna. */
 	grid-area: navigation;
 	width: 100%;
 	height: 100px;
@@ -27,7 +21,7 @@ nav ul {
 	list-style: none;
 }
 
-nav li {
+nav li { /*De faktiska knapparna, transition-duration ger en övergångseffekt när man hovrar. Resten säger sig självt. */
 	text-align: center;
 	margin: 7px;
 	border-bottom: 1px solid black;
@@ -36,77 +30,71 @@ nav li {
 	border-radius: 2px;
 }
 
-nav li:hover {
+nav li:hover { /*På hover: knapparna får en vit border & flyttar sig 3px neråt, ser snyggt ut. */
 	border: 1px solid white;
 	transform: translateY(3px);
 }
 
-li a:before {
+li a:before { /*:before-"reset" för knapp-elementen. Behövs!*/
 	content: "";
 	display: inline-block;
 	vertical-align: middle;
 	height: 100%;
 }
 
-li a {
+li a { /*Länktexten a inom li, knapparna i naven. */
 	text-shadow: 1px 5px 10px rgba(255, 255, 255, 1);
-	text-decoration: none;
+	text-decoration: none; /*Tar bort saker inheritade från a. */
 	color: black;
 	font-size: 23px;
 }
 
-.closer {
-	margin: 7px;
-	border-bottom: 1px solid rgb(102, 102, 102);
-	background-color: rgb(245, 245, 245);
-}
-
-section {
+section { /*De större sektionerna på varje sida.*/
 	margin-top: 10px;
 	font-family: "Tilt Neon", sans-serif;
 	padding: 10px;
 	background-color: rgb(236, 236, 236);
 	display: grid;
-	grid-template-columns: 3fr 12fr 3fr;
-	grid-template-areas: ". title ." ". content .";
-	grid-template-rows: 3;
-	min-height: 100px;
-	width: 100%;
+	grid-template-columns: 3fr 12fr 3fr; /*2x3 Area-format*/
+	grid-template-areas: ". title ." ". content ."; /*Sätter utrymmet, och title samt content-areorna*/
+	min-height: 100px; /*Så att rutan inte blir för liten*/
+	width: 100%; /*Section täcker hela bredden*/
 }
 
-section h1:first-of-type {
+section h1:first-of-type, section h2:first-of-type { /*Första h2an i section (ska ändå bara vara en h1/h2)*/
 	margin-top: 25px;
-	grid-area: title;
-	font-size: 30px;
+	grid-area: title; /*Får titel-arean*/
+	font-size: 30px; /*Större text*/
 	padding: 2px;
 }
 
-section div:first-of-type {
+
+section div:first-of-type {/*Första diven placeras i content-arean. */
 	margin-top: 20px;
 	grid-area: content;
 	font-size: 25px;
 }
 
-section img {
+section img { /*Bilder i sectionen får en viss höjd och blir rundare. De får också färgfilter på sig. */
 	width: 100%;
 	height: 500px;
 	border-radius: 24px 24px 24px 24px;
 	filter: grayscale(0.4) brightness(0.9);
 }
 
-footer {
-	position: fixed;
-	bottom: 15px;
-	left: 10px;
+footer { /*Footer-texten längst nere på varje sida blir centrerad & får mer utrymme */
+	margin: 20px;
+	padding-bottom: 20px;
+	text-align: center;
 }
 
-tr {
+tr { /*Tablerow får 100% bredd och en bestämd höjd på 20px*/
 	width: 100%;
 	height: 20px;
 }
 
 td,
-th {
+th { /*Sätter grunden för td,th innan de definieras ytterligare nedan. Texten ska till exempel placeras från höger till vänster, med en liten svart border.*/
 	font-size: 17px;
 	margin: 20px;
 	padding: 20px;
@@ -115,29 +103,29 @@ th {
 }
 
 td:nth-child(2n + 1),
-th:nth-child(2n + 1) {
+th:nth-child(2n + 1) { /*Var 2n+1 table-data&sin rubrik får färgen svart och bakgrundsfärgen ljusgrå med passande text-shadow*/
 	color: black;
 	text-shadow: -1px 1px 0 #d6d6d6, 1px 1px 0 #d6d6d6, 1px -1px 0 #d6d6d6, -1px -1px 0 #d6d6d6;
 	background-color: rgb(202, 202, 202);
 }
 td:nth-child(2n),
-th:nth-child(2n) {
+th:nth-child(2n) { /*Var 2n table-data &sin rubrik får färgen vit och bakgrundsfärgen mörkgrå med passande text-shadow*/
 	color: white;
 	text-shadow: -1px 1px 0 #123, 1px 1px 0 #123, 1px -1px 0 #123, -1px -1px 0 #123;
 	background-color: rgb(133, 133, 133);
 }
 
-.warning {
+.warning { /*Varningstexten i kontakt är röd, understreckad och lite mindre*/
 	color: rgb(83, 0, 0);
 	text-decoration: underline;
 	font-size: 20px;
 }
 
-ol {
+ol { /*Ordered-list är i decimal av standard*/
 	list-style-type: decimal;
 }
 
-ol li {
+ol li { /*Saker i listan ovan får en liten snygg "bar" på vänster sida. */
 	border-left: 1px solid black;
 	padding-left: 10px;
 }
